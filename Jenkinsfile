@@ -11,5 +11,10 @@ pipeline {
         echo 'Code Downloaded from GitHub Successfully'
       }
     }
+    stage('Build') {
+      steps {
+        sh 'mvn clean install -f pom.xml'
+      }
+    }
   }
 }
