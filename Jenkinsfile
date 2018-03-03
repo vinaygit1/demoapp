@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build_war') {
       steps {
-        sh 'clean install'
+        sh 'mvn clean install'
       }
     }
     stage('jobcomplete') {
