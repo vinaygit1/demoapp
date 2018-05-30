@@ -1,20 +1,16 @@
-pipeline {
-  agent any
-  stages {
-    stage('Checkout from GITHUB') {
-      steps {
-        git(url: 'https://github.com/vinaygit1/demoapp.git', branch: 'master')
-      }
-    }
-    stage('Build_war') {
-      steps {
-        sh 'mvn clean install'
-      }
-    }
-    stage('jobcomplete') {
-      steps {
-        echo 'BUILD IS COMPLETE'
-      }
-    }
-  }
+node {
+   def mvnHome
+   stage('Preparation') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/vinaygit1/demoapp.git'
+      
+   }
+  stage ('build the war file'){
+    sh "mvn clean install"   
+   } 
+   stage ('deploytotomcat'){
+   sh "sudo cp target/demoapp.war /opt/tomcat/apache-tomcat-8.0.50/webapps"
+   }
+
+   
 }
