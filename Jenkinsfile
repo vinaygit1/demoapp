@@ -5,5 +5,11 @@ node{
 stage ('compiling the code'){
  mvnhome = tool name: 'maven', type: 'maven'
       sh "${mvnhome}/bin/mvn package"
+ stage('SonarQube analysis') {
+   mvnhome = tool name: 'maven', type: 'maven'
+    withSonarQubeEnv('sonarserver') {
+     sh "${mvnhome}/bin/mvn package"      
+    }
+  }
 }
 }
