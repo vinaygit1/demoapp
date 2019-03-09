@@ -1,6 +1,5 @@
 node {
-  any
-  def mvnhome
+    def mvnhome
   stage('git checkout')
   git 'https://github.com/vinaygit1/demoapp.git'
    }
