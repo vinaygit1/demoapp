@@ -8,7 +8,7 @@ stage ('compiling the code'){
  stage('SonarQube analysis') {
    mvnhome = tool name: 'maven', type: 'maven'
     withSonarQubeEnv('sonarserver') {
-     sh "${mvnhome}/bin/mvn package"      
+     sh "${mvnhome}/bin/mvn sonar:sonar"      
     }
   }
 }
