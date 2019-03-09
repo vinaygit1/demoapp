@@ -1,4 +1,4 @@
-node {
+node{
       stage('git checkout')
   git 'https://github.com/vinaygit1/demoapp.git'
    }
